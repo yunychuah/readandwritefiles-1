@@ -14,18 +14,20 @@ customer_ID = 250
 customer_total = 0 
 line_total = 0
 
+outfile.write('Customer' + '|' 'Total' + '\n')
+
 for record in csvfile:
     if record[0] == str(customer_ID):
         line_total = float(record[3])+ float(record[4]) + float(record[5])
         customer_total += line_total
+         
     else:
-        customer_ID += 1
+        outfile.write(str(customer_ID) + '      ' + str(customer_total) +'\n') 
+        customer_ID = record[0] 
         line_total = 0
+        customer_total = 0
         line_total = float(record[3])+ float(record[4]) + float(record[5])
         customer_total += line_total
-        
-    outfile.write(str(customer_total)+'\n')    
-outfile.close()
 
-#current customer id equal to previous cust id
-#set customer id 
+outfile.write('261' + '      ' + str(customer_total))           
+outfile.close() 
