@@ -14,7 +14,7 @@ customer_ID = 250
 customer_total = 0 
 line_total = 0
 
-outfile.write('Customer' + '|' 'Total' + '\n')
+outfile.write('Customer' + ',' 'Total' + '\n')
 
 for record in csvfile:
     if record[0] == str(customer_ID):
@@ -22,12 +22,12 @@ for record in csvfile:
         customer_total += line_total
          
     else:
-        outfile.write(str(customer_ID) + '      ' + str(customer_total) +'\n') 
+        outfile.write(str(customer_ID) + ',' + str(customer_total) +'\n') 
         customer_ID = record[0] 
         line_total = 0
         customer_total = 0
         line_total = float(record[3])+ float(record[4]) + float(record[5])
         customer_total += line_total
 
-outfile.write('261' + '      ' + str(customer_total))           
+outfile.write('261' + ',' + str(customer_total))           
 outfile.close() 
